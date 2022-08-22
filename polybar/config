@@ -21,7 +21,8 @@ background-alt = #312F43
 
 foreground = #D9E0EE
 #primary = #ABE9B3
-purple = #4a2b34
+purple = #4a2b34  
+lightpurple = #ed8cb0
 primary = #bf3b63
 secondary = #8ABEB7
 alert = #F28FAD
@@ -62,7 +63,7 @@ font-2 = FontAwesome:style=Regular:pixelsize=12;3
 font-3 = IPAGothic:size=12:antialias=true;0		# (Japanese) Band names, etc.
 #font-4 = Batang:size=12:antialias=true;0		# (Korean) etc.
 
-modules-left = i3 sep spotify
+modules-left = i3 sep
 modules-center = xwindow
 modules-right = weather sep filesystem sep cpu sep memory sep date sep pulseaudio sep
 
@@ -76,8 +77,8 @@ cursor-scroll = ns-resize
 ;########################################### XWINDOW
 [module/xwindow]
 type = internal/xwindow
-label = [ %title:0:30:...% ]
-#format-background = ${colors.purple}
+label = °º¤ø,¸¸,ø¤º°`°º¤ø,¸ %title:0:30:...% °º¤ø,¸¸,ø¤º°`°º¤ø,¸
+format-foreground = ${colors.lightpurple}
 format-background = ${colors.background}
 
 ;########################################### XKEYBOARD
@@ -102,7 +103,7 @@ interval = 25
 #format-mounted-background = ${colors.background-alt}
 
 mount-0 = "/"
-mount-1 = "/media/GAMES"
+#mount-1 = "/media/GAMES"
 label-mounted-foreground = ${colors.foreground}
 label-mounted = %{F }%mountpoint%%{F-}: %free%
 
@@ -306,20 +307,13 @@ ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
-;########################################### POWERBUTTON
-[module/powerbutton]
-type = custom/text
-content = 
 
-click-left = clearine &
-content-foreground = #bcbcbc
-content-underline = #bcbcbc
 ;########################################### SEPERATOR
 [module/sep]
 type = custom/text
 content = |
 
-content-foreground = ${colors.foreground}
+content-foreground = ${colors.lightpurple}
 content-background = ${colors.background}
 content-padding = 1
 
@@ -327,39 +321,9 @@ content-padding = 1
 [module/sep2]
 type = custom/text
 content = |
-content-foreground = ${colors.foreground-alt}
+#content-foreground = ${colors.foreground-alt}
+content-foreground = ${colors.lightpurple}
 content-padding = 1
-
-;########################################### POWERMENU
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = return
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = systemctl reboot
-
-menu-2-0 = return
-menu-2-0-exec = menu-open-0
-menu-2-1 = power off
-menu-2-1-exec = systemctl poweroff
-
 
 
 ;###########################################
