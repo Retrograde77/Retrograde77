@@ -1,9 +1,9 @@
 #---- OLD pink colors
-client.focused          #caa9fa     #caa9fa     #caa9fa     #caa9fa     #caa9fa
+client.focused          #bf3b63     #bf3b63     #bf3b63     #bf3b63     #bf3b63
 client.focused_inactive #282a36     #282a36     #282a36     #282a36     #282a36
-client.unfocused       #282a36     #282a36     #282a36     #282a36     #282a36
-client.unfocused        #b16286     #b16286     #b16286     #b16286     #b16286
-client.focused_inactive #b16286     #b16286     #b16286     #b16286     #b16286
+#client.unfocused       #282a36     #282a36     #282a36     #282a36     #282a36
+client.unfocused        #4a2b34     #4a2b34     #4a2b34     #4a2b34     #4a2b34  
+client.focused_inactive #4a2b34     #4a2b34     #4a2b34     #4a2b34     #4a2b34
 #----------------------------------------------------
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use 
@@ -25,7 +25,9 @@ client.focused_inactive #b16286     #b16286     #b16286     #b16286     #b16286
 
 #client.background       $bg
 
-#-----------------------------------------
+#----------------------------------------- FIXED XRANDR?
+exec_always xrandr --output DVI-I-0 --off --output DVI-I-1 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate right --output DP-0 --off --output DP-1 --primary --mode 1920x1080 --pos 1080x663 --rotate normal --output DVI-D-0 --off
+
 
 #exec xautolock -time 30 -locker i3lock -c 000000
 exec_always xinput --set-prop "Razer  Razer Abyssus" "libinput Accel Speed" -0.9 &
@@ -35,15 +37,16 @@ exec --no-startup-id blueman-applet &
 
 exec_always setxkbmap -layout gb &
 
-exec_always xrandr --output DVI-I-0 --off --output DVI-I-1 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate right --output DP-0 --off --output DP-1 --primary --mode 1920x1080 --pos 1080x706 --rotate normal --output DVI-D-0 --off &
+#exec_always xrandr --output DVI-I-0 --off --output DVI-I-1 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate right --output DP-0 --off --output DP-1 --primary --mode 1920x1080 --pos 1080x706 --rotate normal --output DVI-D-0 --off &
 exec_always dunst &
 
 exec_always nitrogen --restore &
 #exec mpd /home/retrograde/.config/mpd/mpd.conf &
-exec_always wal -n -wcd &
+#exec_always wal -n -wcd &
 
 #exec_always xcompmgr &
-exec_always --no-startup-id picom --config /home/retrograde/.config/picom/picom.conf &
+#exec_always --no-startup-id picom --config /home/retrograde/.config/picom/picom.conf &
+exec_always --no-startup-id picom --experimental-backends --config /home/retrograde/.config/picom/picom.conf &
 
 exec_always --no-startup-id $HOME/.config/polybar/./launch.sh &
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -81,7 +84,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show drun -show-icons
-bindsym $mod+shift+d exec /home/retrograde/.config/polybar/./powermenu.sh
+
 
 # change focus
 bindsym $mod+j focus left
@@ -208,10 +211,15 @@ bindsym $mod+Ctrl+m exec pavucontrol
 bindsym $mod+Shift+b exec firefox
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+Ctrl+f exec files;focus
-bindsym $mod+shift+f exec pcmanfm;focus
+bindsym $mod+shift+f exec thunar;focus
+#bindsym $mod+shift+f exec nautilus;focus
 bindsym $mod+shift+o exec i3lock -c 000000
 bindsym $mod+Tab exec rofi -show window
 bindsym Print exec --no-startup-id flameshot
+bindsym $mod+Ctrl+h exec xscreensaver-command --activate
+
+bindsym $mod+Ctrl+c exec /home/retrograde/.config/picom/picoff.sh &
+
 
 for_window [class="Steam"] floating enable, border none 
 for_window [class="Pavucontrol"]        floating enable
@@ -221,14 +229,14 @@ for_window [class="Nautilus"]           floating enable
 for_window [class="mpv"]                floating enable
 for_window [class="Lxappearance"]       floating enable border normal
 for_window [class="Shortwave"]          floating enable
-for_window [class="Joplin"]             floating enable
+for_window [class="Xfce4-taskmanager"]  floating enable
 for_window [class="subl"]               floating enable
-for_window [class="qbittorrent"]        floating enable
+for_window [class="qBittorrent"]        floating enable
 for_window [class="eog"]                floating enable
 for_window [class="feh"]                floating enable
-for_window [class="image-viewer"]       floating enable
+for_window [class="Eog"]                floating enable
 
-gaps inner 8
+gaps inner 4
 #gaps outer 3
-for_window [class="^.*"] border pixel 6
+for_window [class="^.*"] border pixel 4
 new_window pixel 0
